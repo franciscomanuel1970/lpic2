@@ -1,4 +1,3 @@
-  
 https://ssh.cloud.google.com/cloudshell/editor?shellonly=true
 PS1="\w$ "
 http://www.academia-online.org/linux/ext/ex1/ext2.pdf
@@ -64,4 +63,31 @@ ip address | grep "inet.*lo$" | cut --delimiter / --field 2 | awk '{ print $1 }'
 ip=$(  ip address | grep "inet.*eth0$" | cut --delimiter / --field 1 | awk '{ print $2 }' )
 cdr=$( ip address | grep "inet.*eth0$" | cut --delimiter / --field 2 | awk '{ print $1 }' )
 ipcalc  $ip/$cdr | awk /Network/'{ print $2 }'
-
+https://console.aws.amazon.com/
+touch /.autorelabel
+ssh-keygen
+cat /home/ec2-user/.ssh/id_rsa.pub
+cat .ssh/authorized_keys
+https://www.ssh.com/ssh/tunneling/example
+ssh -L localhost:8080:www.upm.es:80  172.31.41.66
+ssh -L localhost:8443:www.upm.es:443 172.31.41.66
+sudo yum install -y elinks
+links kernel.org
+unxz linux-5.3.8.tar.xz
+tar xfv linux-5.3.8.tar
+cd linux-5.3.8
+du -sh
+du -sh --inodes
+sudo yum install -y flex
+dd if=/dev/zero of=ejemplo.disk count=10000
+mkfs ejemplo.disk
+sudo mount -o loop ejemplo.disk /media/
+lsblk -f
+tune2fs ejemplo.disk -l
+dd 0< /dev/zero 1> emergencia.swap count=10000
+mkswap emergencia.swap
+chmod 600 emergencia.swap
+sudo chown root. emergencia.swap
+sudo swapon emergencia.swap
+swapon --show
+cat 0< /dev/tcp/time.ien.it/13  
