@@ -148,7 +148,7 @@ sudo nc -v -u 172.31.34.135 -p 22 22
 ncat --listen --verbose --sh-exec "cat index.html" --keep-open  2222
 nc -v -p 2222 172.31.34.135 2222
 
-# Montar un servico
+# Montar un servicio
 
 systemctl daemon-reload && systemctl enable backdoor.service && systemctl start backdoor.service
 git clone https://github.com/secobau/lpic2 && cd lpic2
