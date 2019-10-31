@@ -63,14 +63,24 @@ ip address | grep "inet.*lo$" | cut --delimiter / --field 2 | awk '{ print $1 }'
 ip=$(  ip address | grep "inet.*eth0$" | cut --delimiter / --field 1 | awk '{ print $2 }' )
 cdr=$( ip address | grep "inet.*eth0$" | cut --delimiter / --field 2 | awk '{ print $1 }' )
 ipcalc  $ip/$cdr | awk /Network/'{ print $2 }'
+
 https://console.aws.amazon.com/
+
+# Avisar a seliniux
+
 touch /.autorelabel
+
+#Crear tuneles
+
 ssh-keygen
 cat /home/ec2-user/.ssh/id_rsa.pub
 cat .ssh/authorized_keys
 https://www.ssh.com/ssh/tunneling/example
 ssh -L localhost:8080:www.upm.es:80  172.31.41.66
 ssh -L localhost:8443:www.upm.es:443 172.31.41.66
+
+# Kernel....descarga
+
 sudo yum install -y elinks
 links kernel.org
 unxz linux-5.3.8.tar.xz
@@ -79,11 +89,17 @@ cd linux-5.3.8
 du -sh
 du -sh --inodes
 sudo yum install -y flex
+
+# Ejemplo creacion de disco
+
 dd if=/dev/zero of=ejemplo.disk count=10000
 mkfs ejemplo.disk
 sudo mount -o loop ejemplo.disk /media/
 lsblk -f
 tune2fs ejemplo.disk -l
+
+# crear memo swap si no tenemos suficiente
+
 dd 0< /dev/zero 1> emergencia.swap count=10000
 mkswap emergencia.swap
 chmod 600 emergencia.swap
@@ -96,6 +112,9 @@ fdisk /dev/sdb
 pvresize /dev/sda2
 lvextend --size +24g /dev/mapper/centos-root
 xfs_growfs /
+
+# Sockets
+
 cat 0< /dev/tcp/time.ien.it/13
 exec 3< /dev/tcp/www.upm.es/80
 echo GET / 1>& 3
@@ -103,6 +122,9 @@ cat 0<& 3
 ls -l /proc/$( echo $$ )/fd
 lsof -n -P -p $( echo $$ ) | grep TCP
 exec 4< /dev/tcp/$hostname/80 && echo 'GET /' 1>& 4 && cat 0<& 4
+
+# Uso ncat peligro
+
 nc -l -v 9000
 ps -afww
 nc -v localhost 9000
@@ -125,6 +147,9 @@ sudo ncat --listen --verbose --sh-exec "nc www.google.es 80" --keep-open --udp 2
 sudo nc -v -u 172.31.34.135 -p 22 22
 ncat --listen --verbose --sh-exec "cat index.html" --keep-open  2222
 nc -v -p 2222 172.31.34.135 2222
+
+# Montar un servico
+
 systemctl daemon-reload && systemctl enable backdoor.service && systemctl start backdoor.service
 git clone https://github.com/secobau/lpic2 && cd lpic2
 cp usr/local/sbin/tcpdump.sh /usr/local/sbin
